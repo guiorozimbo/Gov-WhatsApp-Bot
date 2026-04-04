@@ -5,10 +5,21 @@ import re
 import pyautogui
 from collections import defaultdict
 
+import os
+from dotenv import load_dotenv
+
+# Carrega variáveis de ambiente do arquivo .env
+load_dotenv()
+
 # === CONFIGURAÇÕES ===
-base_url = "https://chat.gwlegis.com.br"
-account_id = 2
-token = "qdC8V1HGXHKruy4wWj4XsydC"
+base_url = os.getenv("CHATWOOT_BASE_URL", "https://chat.gwlegis.com.br")
+account_id = os.getenv("CHATWOOT_ACCOUNT_ID", "2")
+token = os.getenv("CHATWOOT_TOKEN")
+
+if not token:
+    print("ERRO: Token do Chatwoot não configurado no arquivo .env")
+    exit(1)
+
 headers = {"api_access_token": token}
 
 # === BUSCA TODOS OS CONTATOS COM 'CM' NO NOME ===

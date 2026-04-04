@@ -37,9 +37,19 @@ Este projeto é um bot automatizado em Python para envio de mensagens WhatsApp r
 
 ## Configuração
 
-- **Arquivo `reunioes.json`**: Deve conter um array de objetos com campos como `data` (formato DD/MM/YYYY) e `camara` (nome da cidade/câmara).
-- **Configurações de API**: No código, ajuste as variáveis `base_url`, `account_id` e `token` para a sua instância do Chatwoot. **Nunca commite chaves de API no repositório!** Use variáveis de ambiente ou arquivos locais ignorados pelo `.gitignore`.
-- **Números de telefone**: Os contatos são extraídos do Chatwoot e formatados automaticamente.
+1.  **Variáveis de Ambiente**:
+    - O projeto agora utiliza variáveis de ambiente para maior segurança.
+    - Renomeie o arquivo `.env.example` para `.env`.
+    - Preencha o arquivo `.env` com suas credenciais do Chatwoot:
+      ```env
+      CHATWOOT_BASE_URL=https://chat.gwlegis.com.br
+      CHATWOOT_ACCOUNT_ID=2
+      CHATWOOT_TOKEN=seu_token_aqui
+      ```
+    - **O arquivo `.env` nunca deve ser enviado ao repositório!** Ele já está no `.gitignore`.
+
+2.  **Arquivo `reunioes.json`**: Deve conter um array de objetos com campos como `data` (formato DD/MM/YYYY) e `camara` (nome da cidade/câmara).
+3.  **Segurança**: O `.gitignore` foi configurado para nível sênior, protegendo arquivos JSON, SQLite, chaves API e dados sensíveis de serem vazados.
 
 ## Como Usar
 
